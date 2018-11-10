@@ -1,0 +1,28 @@
+{
+  "name": "stockwatch",
+  "version": "1.0.0",
+  "description": "Provides an interface to observe the stock market movement",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelrcosta/StockWatch.git"
+  },
+  "author": "Samuel Costa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samuelrcosta/StockWatch/issues"
+  },
+  "homepage": "https://github.com/samuelrcosta/StockWatch#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "consign": "^0.1.6",
+    "dotenv": "^6.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.0"
+  }
+}
