@@ -1,28 +1,71 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-
-    <title>Portal de notícias</title>
-
-    <!-- JQuery -->
-    <script src="js/jquery-2.2.1.js"></script>
-
-    <!-- bootstrap - link cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <!-- incluindo css -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <% include includes/header %>
 </head>
-
 <body>
+<% include includes/menu %>
 
-HELLO WORLD
+<div class="container">
+    <div id="search-form-container">
+        <form id="searchForm">
+            <h1 style="text-align: center; margin: 15px; font-size: 30px;">Pesquise uma Bolsa</h1>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="searchWord" placeholder="Digite um nome, símbolo, etc">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="invalid-feedback" id="msg-error-container"></div>
+            </div>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        </form>
+    </div>
 
+    <div id="results-containers">
+
+    </div>
+</div>
+
+<% include includes/footer %>
+
+<script type="text/template" id="template-alert-danger">
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+</script>
+
+<script type="text/template" id="template-wait-response">
+    <div style="width: 100%; text-align: center">
+        <i style="font-size: 30px;" class="fas fa-spinner fa-spin"></i>
+    </div>
+</script>
+
+<script type="text/template" id="template-search-results">
+    <div class="row">
+        {{ #.}}
+        <div class="col-md-6" style="margin-bottom: 20px;">
+            <div class="card">
+                <div class="card-body">
+                    <h6>{{ symbol }}</h6>
+                    <h5 class="card-title">{{ name }}</h5>
+                    <p class="card-text">
+                        Região: {{ region }}<br>
+                        Moeda: {{ currency }}<br>
+                        Timezone: {{ timezone }}<br>
+                        Horário: {{ marketOpen }} - {{ marketClose }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Explorar Detalhes</a>
+                </div>
+            </div>
+        </div>
+        {{ /. }}
+    </div>
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      Controller.start(BASE_URL);
+    });
+</script>
 </body>
 </html>

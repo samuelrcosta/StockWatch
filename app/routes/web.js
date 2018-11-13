@@ -1,7 +1,11 @@
+const homeCtrl = require('./../controllers/homeController');
+
 module.exports = function(application) {
   
+  const homeController = new homeCtrl();
+  
   application.get('/', function (req, res) {
-    application.app.controllers.home.index(application, req, res);
+    homeController.index(application, req, res);
   });
   
 };
