@@ -1,0 +1,114 @@
+<script type="text/template" id="template-alert-danger">
+    <div class="alert alert-danger" style="margin-top: 15px;" role="alert">
+        {{ message }}
+    </div>
+</script>
+
+<script type="text/template" id="template-wait-response">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
+        <i style="font-size: 30px;" class="fas fa-spinner fa-spin"></i>
+    </div>
+</script>
+
+<script type="text/template" id="template-my-stocks">
+    <h1 style="text-align: center; margin: 15px; font-size: 30px;">Minhas Ações</h1>
+    <div id="my-sotcks-list"></div>
+</script>
+
+<script type="text/template" id="template-search-results">
+    <div class="row">
+        {{ #.}}
+        <div class="col-md-6" style="margin-bottom: 20px;">
+            <div class="card" data-symbol="{{ symbol }}" data-name="{{ name }}" data-region="{{ region }}" data-currency="{{ currency }}" data-timezone="{{ timezone }}" data-marketopen="{{ marketOpen }}" data-marketclose="{{ marketClose }}">
+                <div class="card-body">
+                    <div class="favorite {{ favorite }}"><i class="fas fa-star"></i></div>
+                    <h5 class="card-title">{{ name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ symbol }}</h6>
+                    <p class="card-text">
+                        Região: {{ region }}<br>
+                        Moeda: {{ currency }}<br>
+                        Timezone: {{ timezone }}<br>
+                        Horário: {{ marketOpen }} - {{ marketClose }}
+                    </p>
+                    <button type="button" class="btn btn-primary explore-stock">Explorar Detalhes</button>
+                </div>
+            </div>
+        </div>
+        {{ /. }}
+    </div>
+</script>
+
+<script type="text/template" id="template-stock-default">
+    <div class="card stock-card" data-symbol="{{ symbol }}" data-name="{{ name }}" data-region="{{ region }}" data-currency="{{ currency }}" data-timezone="{{ timezone }}" data-marketopen="{{ marketOpen }}" data-marketclose="{{ marketClose }}">
+        <div class="card-header">
+            {{ name }} - {{ symbol }}
+        </div>
+        <div class="card-body">
+            <div class="favorite {{ favorite }}"><i class="fas fa-star"></i></div>
+            <h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 15px!important;">Últimas informações - {{ lastTradingDay }}</h6>
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <td>Abertura</td>
+                        <td>Alta</td>
+                        <td>Baixa</td>
+                        <td>Preço</td>
+                        <td>Volume</td>
+                        <td>Variação</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ open }}</td>
+                        <td>{{ high }}</td>
+                        <td>{{ low }}</td>
+                        <td>{{ price }}</td>
+                        <td>{{ volume }}</td>
+                        <td>{{ changePercent }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="card-text">
+                Selecione abaixo a opção desejada
+            </p>
+            <button type="button" class="btn btn-success btn-time-data" data-type="monthly">Mensal</button>
+            <button type="button" class="btn btn-danger btn-time-data" data-type="weekly">Semanal</button>
+            <button type="button" class="btn btn-info btn-time-data" data-type="daily">Diário</button>
+            <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tempo Real
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button type="button" class="dropdown-item btn-time-data" data-type="time-real" data-interval="1">1 minuto</button>
+                    <button type="button" class="dropdown-item btn-time-data" data-type="time-real" data-interval="5">5 minutos</button>
+                    <button type="button" class="dropdown-item btn-time-data" data-type="time-real" data-interval="15">15 minutos</button>
+                    <button type="button" class="dropdown-item btn-time-data" data-type="time-real" data-interval="30">30 minutos</button>
+                    <button type="button" class="dropdown-item btn-time-data" data-type="time-real" data-interval="60">60 minutos</button>
+                </div>
+            </div>
+            <div id="container-graphic">
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <table style="width: 100%;">
+                <tbody>
+                <tr>
+                    <td><strong>Região:</strong> {{ region }}</td>
+                    <td><strong>Moeda:</strong> {{ currency }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Timezone:</strong> {{ timezone }}</td>
+                    <td><strong>Horário:</strong> {{ marketOpen }} - {{ marketClose }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="template-canvas-graphic">
+    <canvas id="chartjs" class="chartjs"></canvas>
+</script>

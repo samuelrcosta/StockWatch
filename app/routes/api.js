@@ -4,6 +4,18 @@ module.exports = function(application){
   
   const apiController = new apiCtrl();
   
+  application.get('/api/favorites', function(req, res){
+    apiController.getFavoritesStocks(application, req, res);
+  });
+  
+  application.put('/api/favorites', function(req, res){
+    apiController.insertFavoriteStock(application, req, res);
+  });
+  
+  application.delete('/api/favorites', function(req, res){
+    apiController.deleteFavoriteStock(application, req, res);
+  });
+  
   application.get('/api/search/:word', function (req, res){
     apiController.search(application, req, res);
   });

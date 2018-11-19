@@ -2,7 +2,21 @@
     display: none;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
 .stock-card{
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.favorite{
+    cursor: pointer;
+    float: right;
+    color: #C3C3C3;
+}
+
+.favorite.active{
+    color: #edd909;
 }

@@ -1,9 +1,73 @@
 const stockMarket = require('./../models/StockMarket');
+const favoriteStock = require('./../models/FavoriteStock');
 
 class apiController{
   
   constructor(){
     this._stockMarket = new stockMarket();
+    this._favoriteStock = new favoriteStock();
+  }
+  
+  getFavoritesStocks(application, req, res){
+    this._favoriteStock.getList()
+    .then(response => {
+      let resp = {data: response};
+      this.constructor.handleSuccess(res, resp);
+    })
+    .catch(error => {
+      console.log(error);
+      this.constructor.handleReqError(res, error);
+    });
+  }
+  
+  insertFavoriteStock(application, req, res){
+    let stock = req.body;
+    
+    req.assert('symbol', "Symbol is require").notEmpty();
+    req.assert('name', "Name is required").notEmpty();
+    req.assert('region', "Region is required").notEmpty();
+    req.assert('marketOpen', "Market Open is required").notEmpty();
+    req.assert('marketClose', "Market Close is required").notEmpty();
+    req.assert('timezone', "Timezone is required").notEmpty();
+    req.assert('currency', "Currency is required").notEmpty();
+    
+    let erros = req.validationErrors();
+  
+    if(erros){
+      this.constructor.handleReqError(res, {code: erros});
+      return;
+    }
+    this._favoriteStock.insert(stock)
+    .then(response => {
+      let resp = {data: {}};
+      this.constructor.handleSuccess(res, resp);
+    })
+    .catch(error => {
+      console.log(error);
+      this.constructor.handleReqError(res, error);
+    });
+  }
+  
+  deleteFavoriteStock(application, req, res){
+    let stock = req.body;
+  
+    req.assert('symbol', "Symbol is require").notEmpty();
+  
+    let erros = req.validationErrors();
+  
+    if(erros){
+      this.constructor.handleReqError(res, {code: erros});
+      return;
+    }
+    this._favoriteStock.delete(stock.symbol)
+    .then(response => {
+      let resp = {data: {}};
+      this.constructor.handleSuccess(res, resp);
+    })
+    .catch(error => {
+      console.log(error);
+      this.constructor.handleReqError(res, error);
+    });
   }
   
   static handleReqError(res, errData){
