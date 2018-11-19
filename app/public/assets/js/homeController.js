@@ -1,6 +1,7 @@
 const Controller = {
   BASE_URL: null,
   
+  BUTTON_HOME: "#home-button",
   BUTTON_EXPLORE: ".explore-stock",
   BUTTON_TIME_DATA: ".btn-time-data",
   BUTTON_MY_STOCK: "#my-stocks",
@@ -44,6 +45,9 @@ const Controller = {
   _listeners: function _listeners(){
     this._getMyStocksList();
     
+    $(Controller.BUTTON_HOME).click(function(){
+      Controller._renderHome();
+    });
     $(Controller.FORM).submit(function(e){
       e.preventDefault();
       Controller._sendForm($(Controller.FORM));
@@ -70,6 +74,14 @@ const Controller = {
     .catch(error => {
       console.log(error);
     });
+  },
+  
+  _renderHome: function _renderHome(){
+    $(Controller.CONTAINER_BIG_SEARCH).find('input').val("");
+    $(Controller.CONTAINER_BIG_SEARCH).slideDown();
+    $(Controller.CONTAINER_SMALL_SEARCH).find('input').val("");
+    $(Controller.CONTAINER_SMALL_SEARCH).hide();
+    $(Controller.CONTAINER_RESULTS).html("");
   },
   
   _sendForm: function _sendForm($form){

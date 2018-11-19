@@ -2,6 +2,10 @@
     display: none;
 }
 
+#home-button{
+    cursor: pointer;
+}
+
 .nav-link{
     cursor: pointer;
 }
