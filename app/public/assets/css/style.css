@@ -1,3 +1,71 @@
+body{
+    font-family: Lato, sans-serif;
+}
+
+nav{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+h1{
+    font-size: 38px;
+    font-weight: 700;
+    text-align: center;
+    margin: 15px auto 15px auto;
+    color: #161A55;
+}
+
+p.subtitle{
+    color: #161A55;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: -10px;
+    text-align: center;
+}
+p.legend{
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 0.6rem;
+    color: #383734;
+    margin-left: 0.8rem;
+}
+
+.btn-stockwatch{
+    color: white;
+    background-color: #161A55;
+    border-color: #161A55;
+    transition: background-color linear 0.125s;
+}
+.btn-stockwatch:hover{
+    background-color: white;
+    color: #161A55;
+}
+
+.btn-success:hover{
+    color: #28a745;
+    background-color: transparent;
+    background-image: none;
+    border-color: #28a745;
+}
+.btn-danger:hover{
+    color: #dc3545;
+    background-color: transparent;
+    background-image: none;
+    border-color: #dc3545;
+}
+.btn-info:hover{
+    color: #17a2b8;
+    background-color: transparent;
+    background-image: none;
+    border-color: #17a2b8;
+}
+.btn-primary:hover{
+    color: #007bff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #007bff;
+}
+
 #container-small-search{
     display: none;
 }
@@ -13,14 +81,36 @@
 .stock-card{
     margin-top: 30px;
     margin-bottom: 30px;
+    border-color: #161A55;
+}
+.stock-card .card-header{
+    color: white;
+    background-color: #161A55;
+    border-color: #161A55;
 }
 
 .favorite{
     cursor: pointer;
     float: right;
     color: #C3C3C3;
+    transition: color linear 0.3s;
+}
+.favorite:hover{
+    color: #4D4D4D;
 }
 
 .favorite.active{
     color: #edd909;
+}
+.favorite.active:hover{
+    color: #fce605;
+}
+.nav-tabs{
+    border-bottom: 0;
+}
+.table-last-info{
+    border: 1px solid #dee2e6;
+}
+.table-last-info thead tr td{
+    border: 0;
 }

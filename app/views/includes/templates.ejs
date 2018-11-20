@@ -11,7 +11,8 @@
 </script>
 
 <script type="text/template" id="template-my-stocks">
-    <h1 style="text-align: center; margin: 15px; font-size: 30px;">Minhas Ações</h1>
+    <h1>Minhas Ações</h1>
+    <p class="subtitle">Veja suas ações favoritas</p>
     <div id="my-sotcks-list"></div>
 </script>
 
@@ -30,7 +31,10 @@
                         Timezone: {{ timezone }}<br>
                         Horário: {{ marketOpen }} - {{ marketClose }}
                     </p>
-                    <button type="button" class="btn btn-primary explore-stock">Explorar Detalhes</button>
+
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-stockwatch explore-stock">Explorar Detalhes</button>
                 </div>
             </div>
         </div>
@@ -45,9 +49,13 @@
         </div>
         <div class="card-body">
             <div class="favorite {{ favorite }}"><i class="fas fa-star"></i></div>
-            <h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 15px!important;">Últimas informações - {{ lastTradingDay }}</h6>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Últimas informações - {{ lastTradingDay }}</a>
+                </li>
+            </ul>
             <div class="table-responsive">
-                <table class="table table-condensed">
+                <table class="table table-condensed table-last-info">
                     <thead>
                     <tr>
                         <td>Abertura</td>
@@ -111,4 +119,5 @@
 
 <script type="text/template" id="template-canvas-graphic">
     <canvas id="chartjs" class="chartjs"></canvas>
+    <p class="legend">* a data está convertida para o Horário Oficial de Brasília</p>
 </script>
