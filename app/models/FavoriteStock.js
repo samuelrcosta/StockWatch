@@ -6,9 +6,8 @@ class FavoriteStock{
   }
   
   getList(){
-    let connection = this._connection();
-    return new Promise(function(resolve, reject) {
-      connection.query('select * from favorite_stock order by name asc', function (err, rows) {
+    return new Promise((resolve, reject) => {
+      this._connection().query('select * from favorite_stock order by name asc', function (err, rows) {
         if (err) {
           return reject(err);
         }
@@ -17,10 +16,9 @@ class FavoriteStock{
     });
   };
   
-  insert(stock, callback){
-    let connection = this._connection();
-    return new Promise(function(resolve, reject) {
-      connection.query('insert into favorite_stock set ? ', stock, function (err, rows) {
+  insert(stock){
+    return new Promise((resolve, reject) => {
+      this._connection().query('insert into favorite_stock set ? ', stock, function (err, rows) {
         if (err) {
           return reject(err);
         }
@@ -29,10 +27,9 @@ class FavoriteStock{
     });
   }
   
-  delete(symbol, callback){
-    let connection = this._connection();
-    return new Promise(function(resolve, reject) {
-      connection.query('delete from favorite_stock where symbol = ? ', symbol, function (err, rows) {
+  delete(symbol){
+    return new Promise((resolve, reject) => {
+      this._connection().query('delete from favorite_stock where symbol = ? ', symbol, function (err, rows) {
         if (err) {
           return reject(err);
         }
