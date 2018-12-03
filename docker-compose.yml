@@ -1,0 +1,21 @@
+version: '2' 
+services: 
+    web: 
+        build: ./
+        command: node app 
+        environment: 
+            - PORT=80
+        ports: 
+            - "80:80" 
+    db:
+        image: mysql:5.7
+        container_name: db-mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./docker/db:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=stockwatch
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=root            
