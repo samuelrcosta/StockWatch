@@ -2,7 +2,8 @@ version: '2'
 services: 
     web: 
         build: ./
-        command: forever start app.js 
+        command: node app
+        container_name: web
         environment: 
             - PORT=80
         ports: 
