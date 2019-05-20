@@ -10,10 +10,16 @@ class apiController{
   
   getFavoritesStocks(application, req, res){
     this._favoriteStock.getList()
-    .then(response => {
-      let resp = {data: response};
-      this.constructor.handleSuccess(res, resp);
-    })
+    .then(
+      (response) => {
+        let resp = {data: response};
+        this.constructor.handleSuccess(res, resp);
+      },
+      (err) => {
+        console.log(err);
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       console.log(error);
       this.constructor.handleReqError(res, error);
@@ -38,10 +44,16 @@ class apiController{
       return;
     }
     this._favoriteStock.insert(stock)
-    .then(response => {
-      let resp = {data: {}};
-      this.constructor.handleSuccess(res, resp);
-    })
+    .then(
+      (response) => {
+        let resp = {data: {}};
+        this.constructor.handleSuccess(res, resp);
+      },
+      (err) => {
+        console.log(err);
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       console.log(error);
       this.constructor.handleReqError(res, error);
@@ -60,10 +72,16 @@ class apiController{
       return;
     }
     this._favoriteStock.delete(stock.symbol)
-    .then(response => {
-      let resp = {data: {}};
-      this.constructor.handleSuccess(res, resp);
-    })
+    .then(
+      (response) => {
+        let resp = {data: {}};
+        this.constructor.handleSuccess(res, resp);
+      },
+      (err) => {
+        console.log(err);
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       console.log(error);
       this.constructor.handleReqError(res, error);
@@ -87,9 +105,14 @@ class apiController{
     let word = req.params.word;
   
     this._stockMarket.searchExchange(word)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
@@ -99,9 +122,14 @@ class apiController{
     let symbol = req.params.symbol;
   
     this._stockMarket.getExchangeQuote(symbol)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
@@ -129,9 +157,14 @@ class apiController{
     }
   
     this._stockMarket.getExchangeIntraday(symbol, interval, output)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
@@ -150,9 +183,14 @@ class apiController{
     }
   
     this._stockMarket.getExchangeDaily(symbol, output)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
@@ -162,9 +200,14 @@ class apiController{
     let symbol = req.params.symbol;
   
     this._stockMarket.getExchangeWeekly(symbol)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
@@ -174,9 +217,14 @@ class apiController{
     let symbol = req.params.symbol;
   
     this._stockMarket.getExchangeMonthly(symbol)
-    .then(response => {
-      this.constructor.handleSuccess(res, response);
-    })
+    .then(
+      (response) => {
+        this.constructor.handleSuccess(res, response);
+      },
+      (err) => {
+        this.constructor.handleReqError(res, err);
+      }
+    )
     .catch(error => {
       this.constructor.handleReqError(res, error);
     });
